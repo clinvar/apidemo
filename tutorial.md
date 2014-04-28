@@ -1,7 +1,7 @@
 Getting Started
 ===============
 This tutorial demostrates example usage of the ClinGenDb API.
-Before trying the codes, please register first via genboree.org.
+Before trying the codes, please register via genboree.org.
 
 ClinGenDb API follows typical REST API styles. Querying and uploading
 variants can be acomplished by visiting coressponding URIs. The following
@@ -19,7 +19,7 @@ The details of calculating the proper tokens can be found in the attached ppts.
 Get variants from ClinGenDb
 ---------------------------
 Variants can be obtained by issuing http GET requests. Responses are returned asJSON documents that contains both the data and servers status codes. A typical  
-
+```ruby
 # An example usage of the clingendb API 
 # @Author Xin Feng 
 # @Email xinf@bcm.edu
@@ -32,8 +32,7 @@ if ARGV.length < 2
 end
 
 # Credentials
-gbLogin   = 'xin'
-usrPass   = ''
+gbLogin, usrPass = getUP 
 
 # Database configuration
 kbName    = 'acmg-Test'
@@ -76,11 +75,13 @@ if statusCode == "OK"
     puts doc["referenceNucleotideSequence"]["value"]
   end
 end
+```
 
 Upload variants to ClinGenDb
 ---------------------------
 Variants can be obtained by issuing http PUT requests. The data file to be uploaded should also be json files that follow a pre-defined data model. An example snippt of codes is:
 
+```ruby
 # An example usage of the clingendb API
 # to insert a document
 # @Author Xin Feng 
@@ -88,6 +89,10 @@ Variants can be obtained by issuing http PUT requests. The data file to be uploa
 # @Date 04/15/2014
 #
 
+if ARGV.length < 1 
+  $stderr.puts "Usage: ruby #{$0} json.doc"
+  exit
+end
 
 dataFile = ARGV[0]
 dataDoc = JSON.parse( File.read( dataFile ) )
@@ -95,8 +100,7 @@ dataDoc = JSON.parse( File.read( dataFile ) )
 docID = CGI.escape(dataDoc['documentID']['value']).gsub(/\+/,'%20')
 
 # Credentials
-gbLogin   = 'xin'
-usrPass   = ''
+gbLogin, usrPass = getUP 
 
 # Database configuration
 kbName    = 'acmg-Test'
@@ -115,6 +119,7 @@ url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath,  detailed)
 page = put(url,dataDoc.to_json)
 puts page.body
 puts page.uri.to_s
+```
 
 Server responses codes
 -----------------------
