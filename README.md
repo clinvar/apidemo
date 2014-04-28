@@ -1,1 +1,4 @@
-Repository for ClinGenDb API demo
+apidemo
+=======
+
+Tutorial and codes for API demo
