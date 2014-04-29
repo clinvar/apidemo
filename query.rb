@@ -1,10 +1,13 @@
-# An example usage of the clingendb API # @Author Xin Feng # @Email xinf@bcm.edu
+# An example usage of the clingendb API 
+# @Author Xin Feng 
+# @Email xinf@bcm.edu
 # @Date 03/19/2014
 #
 
 require 'rest'
 require 'urlb'
 require 'auth'
+require 'up'
 
 if ARGV.length < 2
   $stderr.puts "Usage: ruby #{$0} query.path query.value"
@@ -12,8 +15,7 @@ if ARGV.length < 2
 end
 
 # Credentials
-gbLogin   = 'xin'
-usrPass   = '123456'
+gbLogin, usrPass = getUP 
 
 # Database configuration
 kbName    = 'acmg-Test'
@@ -40,11 +42,12 @@ $stderr.puts "Query url:#{page.uri.to_s}"
 
 $stderr.puts page.body
 
-ga= JSON.parse(page.body)
+ga = JSON.parse(page.body)
 statusCode=ga["status"]["statusCode"]
 if statusCode == "OK"
-  $stderr.puts "Queried Gene: #{ARGV[0]}"
+  $stderr.puts "Queried val: #{ARGV[0]}"
   $stderr.puts "Got #{ga["data"].length} variants"
+
   ga["data"].each do |val|
     doc = val["documentID"]["properties"]
     vals = doc["location"]["properties"]
@@ -54,5 +57,4 @@ if statusCode == "OK"
     print doc["variantNucleotideSequence"]["value"]+ "\t"
     puts doc["referenceNucleotideSequence"]["value"]
   end
-
 end

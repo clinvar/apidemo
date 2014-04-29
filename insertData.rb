@@ -7,15 +7,22 @@
 
 require 'rest'
 require 'urlb'
+require 'up'
+
+if ARGV.length < 1 
+  $stderr.puts "Usage: ruby #{$0} json.doc"
+  exit
+end
 
 dataFile = ARGV[0]
 dataDoc = JSON.parse( File.read( dataFile ) )
-#docID must be the same ID of the dataFile
-docID = CGI.escape(dataDoc['documentID']['value']).gsub(/\+/,'%20') #must have the gsub part!
-#
+
+# docID must be the same ID of the dataFile
+# #must have the gsub part!
+docID = CGI.escape(dataDoc['documentID']['value']).gsub(/\+/,'%20') 
+
 # Credentials
-gbLogin   = 'xin'
-usrPass   = '123456'
+gbLogin, usrPass = getUP 
 
 # Database configuration
 kbName    = 'acmg-Test'
@@ -31,6 +38,8 @@ propPath = ''
 detailed = '' 
 
 url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath,  detailed)
+
 page = put(url,dataDoc.to_json)
+
 puts page.body
-puts page.uri.to_s
+puts "URI:" + page.uri.to_s

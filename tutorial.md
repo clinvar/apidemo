@@ -1,11 +1,18 @@
+
 Getting Started
 ===============
+If you have any questions regarding this tutorial, please contact Xin Feng at: xinf@bcm.edu.
+
 This tutorial demostrates example usage of the ClinGenDb API.
-Before trying the codes, please register via genboree.org.
+Before trying the codes, please register via http://genboree.org. Please follow this FAQ if you have problems signing up: http://genboree.org/theCommons/ezfaq/show/public-commons?faq_id=493
 
 ClinGenDb API follows typical REST API styles. Querying and uploading
 variants can be acomplished by visiting coressponding URIs. The following
 part contains two sections that illustrates the use of http GET and PUT.
+
+The ClinGenDb UI
+----------------
+Although not directly relatected to API, the UI may help visualize the data structure and validate uploaded documents. Please view the prototype of UI at: http://genboree.org/genboreeKB/genboree_kbs?project_id=acmg-apitest
 
 Autherization process
 ---------------------
@@ -15,10 +22,9 @@ process. Before you could access the database and visit any URIs, you will need 
 
 The details of calculating the proper tokens can be found in the attached ppts.
 
-
 Get variants from ClinGenDb
 ---------------------------
-Variants can be obtained by issuing http GET requests. Responses are returned asJSON documents that contains both the data and servers status codes. A typical  
+Variants can be obtained by issuing http GET requests. Responses are returned asJSON documents that contains both the data and servers status codes. 
 ```ruby
 # An example usage of the clingendb API 
 # @Author Xin Feng 
@@ -63,7 +69,7 @@ $stderr.puts page.body
 ga= JSON.parse(page.body)
 statusCode=ga["status"]["statusCode"]
 if statusCode == "OK"
-  $stderr.puts "Queried Gene: #{ARGV[0]}"
+  $stderr.puts "Queried value: #{ARGV[0]}"
   $stderr.puts "Got #{ga["data"].length} variants"
   ga["data"].each do |val|
     doc = val["documentID"]["properties"]
@@ -123,8 +129,7 @@ puts page.uri.to_s
 
 Server responses codes
 -----------------------
-The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to:
-
+The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files.
 
 Genboree Commons for other information
 ----------------
