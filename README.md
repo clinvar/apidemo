@@ -129,7 +129,7 @@ puts page.uri.to_s
 
 Server responses codes
 -----------------------
-The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files.
+The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files in doc folder.
 
 Genboree Commons for other information
 ----------------
