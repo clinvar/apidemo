@@ -38,14 +38,14 @@ url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath,  detailed)
 
 page = get(url)
 
-$stderr.puts "Query url:#{page.uri.to_s}"  
+$stderr.puts "Query url:\n#{page.uri.to_s}"  
 
 $stderr.puts page.body
 
 ga = JSON.parse(page.body)
 statusCode=ga["status"]["statusCode"]
 if statusCode == "OK"
-  $stderr.puts "Queried val: #{ARGV[0]}"
+  $stderr.puts "Queried property: #{ARGV[0]}, value: #{ARGV[1]}"
   $stderr.puts "Got #{ga["data"].length} variants"
 
   ga["data"].each do |val|
