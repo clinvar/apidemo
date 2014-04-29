@@ -7,7 +7,7 @@ require 'auth'
 
 def buildURL(genbHost,gbLogin, usrPass,rsrcPath, propPath,  detailed)
   http        = 'http://'
-  uri         = http + genbHost + rsrcPath + propPath +  detailed
+  uri         = http + genbHost + rsrcPath + propPath + detailed
   authToken   = buildAuthToken(uri, gbLogin, usrPass)
   return uri + authToken
 end

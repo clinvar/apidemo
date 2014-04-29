@@ -18,7 +18,7 @@ dataFile = ARGV[0]
 dataDoc = JSON.parse( File.read( dataFile ) )
 
 # docID must be the same ID of the dataFile
-# #must have the gsub part!
+# Must have the gsub part!
 docID = CGI.escape(dataDoc['documentID']['value']).gsub(/\+/,'%20') 
 
 # Credentials
@@ -37,9 +37,13 @@ rsrcPath = "/REST/v1/grp/#{grpName}/kb/#{kbName}/coll/#{collName}/doc/#{docID}?"
 propPath = '' 
 detailed = '' 
 
-url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath,  detailed)
+url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath, detailed)
 
 page = put(url,dataDoc.to_json)
 
-puts page.body
-puts "URI:" + page.uri.to_s
+ga=JSON.parse(page.body)
+if ga["status"]["statusCode"] == 'OK'
+  puts "Successfully PUT URI:\n" + page.uri.to_s
+else
+  puts "Could not PUT URI:\n" + page.uri.to_s
+end
