@@ -1,0 +1,2 @@
+ruby query.rb documentID.variantEffectOnGene.affectedGene APC 1>variants.txt 2>log
+ruby insertData.rb data/working.json
