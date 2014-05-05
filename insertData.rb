@@ -40,10 +40,5 @@ detailed = ''
 url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath, detailed)
 
 page = put(url,dataDoc.to_json)
-
-ga=JSON.parse(page.body)
-if ga["status"]["statusCode"] == 'OK'
-  puts "Successfully PUT URI:\n" + page.uri.to_s
-else
-  puts "Could not PUT URI:\n" + page.uri.to_s
-end
+resp = JSON.parse(page.body)
+puts resp["status"]

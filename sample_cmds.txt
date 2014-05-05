@@ -1,2 +1,6 @@
 ruby query.rb documentID.variantEffectOnGene.affectedGene APC 1>variants.txt 2>log
+ruby query.rb documentID.evidence.PopulationStudyEvidence.variantFrequency.1000GenomesVariantFrequency 0.09 1>variants.txt 2>log
+ruby query.rb documentID.location.chromosome 11 1>variants.txt 2>log
+
 ruby insertData.rb data/working.json
+ruby insertData.rb data/dummydocID.json
