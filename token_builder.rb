@@ -4,10 +4,7 @@
 # @Date 05/08/2014
 #
 
-require 'rest'
-require 'urlb'
 require 'auth'
-require 'up'
 
 if ARGV.length < 3
   $stderr.puts "Usage: ruby #{$0} url username password"
