@@ -1,4 +1,4 @@
-# An example usage of the clingendb API 
+# app to build the security token
 # @Author Xin Feng 
 # @Email xinf@bcm.edu
 # @Date 05/08/2014
