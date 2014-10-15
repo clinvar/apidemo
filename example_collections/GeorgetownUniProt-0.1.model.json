@@ -1,0 +1,135 @@
+{
+  "unique": true,
+  "name": "DocumentID",
+  "identifier": true,
+  "description": "Document ID.",
+  "required": true,
+  "domain": "regexp(UPD[0-9]{6})",
+  "properties": [
+    {
+      "name": "Protein",
+      "description": "UniProt or similar human readable protein name.",
+      "category": true,
+      "required": true,
+      "domain": "string",
+      "properties": [
+        {
+          "name": "GeneSymbol",
+          "description": "Primary HGNC Gene Name",
+          "domain": "string"
+        },
+        {
+          "name": "UniProtAccession",
+          "description": "UniProt Primary (1st) accession",
+          "required": true,
+          "domain": "string"
+        },
+        {
+          "name": "RefSeqAccession",
+          "description": "NCBI Protein RefSeq accession (important that both uniprot and refseq accessions are for identical protein sequneces)",
+          "required": true,
+          "domain": "string"
+        },
+        {
+          "fixed": true,
+          "name": "TranscriptLocation",
+          "description": "Need? Should be same as RefSeq Accession if you have that? There are multiple transcripts so you need one or the other to know which you are looking at.",
+          "category": true,
+          "domain": "[valueless]",
+          "properties": [
+            {
+              "name": "chr",
+              "domain": "string"
+            },
+            {
+              "name": "start",
+              "domain": "posInt"
+            },
+            {
+              "name": "end",
+              "domain": "posInt"
+            }
+          ]
+        },
+        {
+          "name": "UniProtURL",
+          "description": "URL to souce such a uniprot website for accession",
+          "required": true,
+          "domain": "string"
+        },
+        {
+          "name": "LastUpdateDate",
+          "description": "When data last updated?",
+          "required": true,
+          "domain": "date"
+        }
+      ]
+    },
+    {
+      "name": "ProteinFunction",
+      "description": "General function(s) of a protein from UniProt CC-function lines",
+      "domain": "string"
+    },
+    {
+      "fixed": true,
+      "name": "featureList",
+      "items": [
+        {
+          "name": "feature",
+          "identifier": true,
+          "category": true,
+          "domain": "string",
+          "properties": [
+            {
+              "name": "type",
+              "domain": "string"
+            },
+            {
+              "name": "name",
+              "description": "Specific Feature name/description ie (PDZ domain-binding)",
+              "domain": "string"
+            },
+            {
+              "fixed": true,
+              "name": "proteinSeqCoordinates",
+              "category": true,
+              "domain": "[valueless]",
+              "properties": [
+                {
+                  "name": "start",
+                  "description": "Start Position on Protein Sequence",
+                  "domain": "posInt"
+                },
+                {
+                  "name": "end",
+                  "description": "End Position on Protein Sequence (can be same as start)",
+                  "domain": "posInt"
+                }
+              ]
+            },
+            {
+              "fixed": true,
+              "name": "genomicCoordinates",
+              "category": true,
+              "domain": "[valueless]",
+              "properties": [
+                {
+                  "name": "start",
+                  "description": "A domain can traverse multiple exons here I mark all so many starts and stops. Is there a simpler way?",
+                  "domain": "posInt"
+                },
+                {
+                  "name": "end",
+                  "domain": "posInt"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "description": "UniProt or similar Feature type name ie \"DOMAIN\" (if just for uniprot caould be enumerted)",
+      "category": true,
+      "domain": "string"
+    }
+  ]
+}

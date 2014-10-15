@@ -1,0 +1,448 @@
+{
+  "unique": true,
+  "identifier": true,
+  "name": "DocumentID",
+  "description": "Document ID. Starts with GCD and then 6 digits",
+  "required": true,
+  "properties": [
+    {
+      "name": "gene",
+      "description": "HGNC approved gene symbol (www.genenames.org)",
+      "required": true,
+      "domain": "string"
+    },
+    {
+      "fixed": true,
+      "name": "diseaseNames",
+      "items": [
+        {
+          "identifier": true,
+          "name": "disease",
+          "description": "OMIM approved disease name (http://www.ncbi.nlm.nih.gov/omim) - until we decide which is the main ontology or ontologies to use.",
+          "required": true,
+          "domain": "bioportalTerm(http://data.bioontology.org/search?ontologies=OMIM)"
+        }
+      ],
+      "category": true,
+      "domain": "[valueless]"
+    },
+    {
+      "name": "pubmedSearchQuery",
+      "description": "Ultimately this will be automatically generated but for now it could be useful to store the PubMed search query",
+      "required": true,
+      "domain": "string"
+    },
+    {
+      "name": "dateOfLitSearch",
+      "required": true,
+      "domain": "date"
+    },
+    {
+      "default": 0,
+      "name": "numReturnedSearchResults",
+      "required": true,
+      "domain": "posInt"
+    },
+    {
+      "default": 0,
+      "name": "numIndependentClinicalReports",
+      "required": true,
+      "domain": "posInt"
+    },
+    {
+      "default": "1 - 2hr",
+      "name": "timeToComplete",
+      "required": true,
+      "domain": "enum(< 1hr,1 - 2hr,2 - 3hr,3 - 4hr,4 - 5hr,> 5hr)"
+    },
+    {
+      "fixed": true,
+      "name": "referenceList",
+      "items": [
+        {
+          "identifier": true,
+          "name": "reference",
+          "description": "eg: PMID:123445 . If not pmid, then OTHER:a1234",
+          "category": true,
+          "properties": [
+            {
+              "default": "For pathogenicity",
+              "name": "evidenceCategory",
+              "domain": "enum(For pathogenicity,Against pathogenicity)"
+            },
+            {
+              "default": "PMID",
+              "name": "referenceType",
+              "domain": "enum(PMID,Dissertation,Personal Corrrespondence,Website,Other)"
+            },
+            {
+              "name": "Authors",
+              "domain": "string"
+            },
+            {
+              "name": "Pub. Date",
+              "description": "only years within the range are allowed",
+              "domain": "string"
+            },
+            {
+              "name": "Journal Title",
+              "domain": "string"
+            },
+            {
+              "name": "Title",
+              "description": "Article title",
+              "domain": "string"
+            },
+            {
+              "name": "isFirstPublication",
+              "domain": "boolean"
+            },
+            {
+              "fixed": true,
+              "name": "generalInfo",
+              "category": true,
+              "properties": [
+                {
+                  "name": "numUnrelatedCases",
+                  "description": "This can probably just be an integer. Will check with WG.",
+                  "domain": "enum(1,2,3,>3,>10)"
+                },
+                {
+                  "default": 0,
+                  "name": "numAffectedProbandsWithVariant",
+                  "domain": "posInt"
+                },
+                {
+                  "default": 0,
+                  "name": "numControls",
+                  "description": "Currently redundant with studySubjects - keeping as placeholder for now",
+                  "domain": "posInt"
+                }
+              ],
+              "domain": "[valueless]"
+            },
+            {
+              "fixed": true,
+              "name": "segregationData",
+              "items": [
+                {
+                  "identifier": true,
+                  "name": "segDataID",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "segregationPattern",
+                      "domain": "enum(Autosomal Dominant,Autosomal Recessive,X-linked, de Novo,other,unknown)"
+                    },
+                    {
+                      "fixed": true,
+                      "name": "phenotypeGenotypeRelationship",
+                      "items": [
+                        {
+                          "identifier": true,
+                          "name": "type",
+                          "category": true,
+                          "properties": [
+                            {
+                              "default": 0,
+                              "name": "count",
+                              "domain": "posInt"
+                            }
+                          ],
+                          "domain": "enum(phenotypePositiveGenotypePositive,phenotypeNegativeGenotypePositive,phenotypeUnknownGenotypePositive,phenotypePositiveGenotypeNegative,phenotypeNegativeGenotypeNegative,phenotypeUnkownGenotypeNegative,phenotypePositiveGenotypeUnknown,phenotypeNegativeGenotypeUnknown,phenotypeUnknownGenotypeUnknown)"
+                        }
+                      ],
+                      "category": true,
+                      "domain": "[valueless]"
+                    },
+                    {
+                      "name": "additionalInfo",
+                      "domain": "string"
+                    }
+                  ],
+                  "domain": "string"
+                }
+              ],
+              "category": true,
+              "domain": "[valueless]"
+            },
+            {
+              "fixed": true,
+              "name": "functionalData",
+              "items": [
+                {
+                  "identifier": true,
+                  "name": "dataID",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "type",
+                      "domain": "enum(Expression data,Biochemical Interactions,Biochemical Functions,CelluIar assays of gene disruption,Animal models of gene disruption,Computational modeling,Other)"
+                    },
+                    {
+                      "name": "description",
+                      "domain": "string"
+                    }
+                  ],
+                  "domain": "string"
+                }
+              ],
+              "category": true,
+              "domain": "[valueless]"
+            },
+            {
+              "fixed": true,
+              "name": "studySubjects",
+              "items": [
+                {
+                  "identifier": true,
+                  "name": "studyID",
+                  "category": true,
+                  "properties": [
+                    {
+                      "default": 0,
+                      "name": "numCases",
+                      "domain": "posInt"
+                    },
+                    {
+                      "default": 0,
+                      "name": "numControls",
+                      "domain": "posInt"
+                    },
+                    {
+                      "name": "primaryAscertainmentOutcome",
+                      "domain": "string"
+                    },
+                    {
+                      "name": "otherSelectionCriteria",
+                      "domain": "string"
+                    },
+                    {
+                      "name": "controlCharacteristics",
+                      "domain": "string"
+                    },
+                    {
+                      "name": "otherAttributes",
+                      "domain": "string"
+                    },
+                    {
+                      "fixed": true,
+                      "name": "geneticAnalysis",
+                      "items": [
+                        {
+                          "identifier": true,
+                          "name": "analysisID",
+                          "category": true,
+                          "properties": [
+                            {
+                              "name": "cases",
+                              "domain": "string"
+                            },
+                            {
+                              "name": "controls",
+                              "domain": "string"
+                            },
+                            {
+                              "name": "isGermlineData",
+                              "domain": "boolean"
+                            },
+                            {
+                              "name": "isTumorData",
+                              "domain": "boolean"
+                            },
+                            {
+                              "name": "hasFamilyHistory",
+                              "domain": "enum(yes, no, some)"
+                            },
+                            {
+                              "fixed": true,
+                              "name": "result",
+                              "category": true,
+                              "properties": [
+                                {
+                                  "name": "typeOfStatisticalAnalysis",
+                                  "domain": "string"
+                                },
+                                {
+                                  "name": "wereResultsSignificant",
+                                  "domain": "boolean"
+                                },
+                                {
+                                  "name": "authorsConclusions",
+                                  "domain": "string"
+                                }
+                              ],
+                              "domain": "[valueless]"
+                            }
+                          ],
+                          "domain": "string"
+                        }
+                      ],
+                      "category": true,
+                      "domain": "[valueless]"
+                    }
+                  ],
+                  "domain": "string"
+                }
+              ],
+              "category": true,
+              "domain": "[valueless]"
+            },
+            {
+              "fixed": true,
+              "name": "pathogenicityOfReportedVariants",
+              "category": true,
+              "properties": [
+                {
+                  "default": 0,
+                  "name": "numClearlyPathogenicVariants",
+                  "description": "Ozge & Heidi: Calling all loss of function variants as pathogenic can be misleading, since there may be genes that have loss of function variants frequent in the general population, the variant may only affect a minor transcript, etc. Heidi: it would be useful to note LOF or deleterious variants like this, without concluding they are pathogenic for the disorder being evaluated given that not all genes cause disease though LOFs",
+                  "domain": "posInt"
+                },
+                {
+                  "default": 0,
+                  "name": "numMissenseVariantsWithCompellingEvidence",
+                  "domain": "posInt"
+                },
+                {
+                  "default": 0,
+                  "name": "numOtherVariantsWithWeakEvidence",
+                  "domain": "posInt"
+                },
+                {
+                  "fixed": true,
+                  "name": "variantsIdentified",
+                  "items": [
+                    {
+                      "identifier": true,
+                      "name": "variant",
+                      "category": true,
+                      "properties": [
+                        {
+                          "name": "alleleID",
+                          "description": "Xin - you'll need to check my regex, thanks!!!",
+                          "domain": "regexp(ClinVar\\:SCV\\d{9}\\.\\d|dbVar\\:(n|e)ssv\\d{1,9})"
+                        },
+                        {
+                          "name": "HGVSExpression",
+                          "domain": "string"
+                        },
+                        {
+                          "name": "NCBIAccession",
+                          "domain": "string"
+                        },
+                        {
+                          "fixed": true,
+                          "name": "populationFrequency",
+                          "description": "??? from EVS 1000Genomes etc. Can this be pulled in from the variantAlleleID?",
+                          "items": [
+                            {
+                              "identifier": true,
+                              "name": "frequencyID",
+                              "category": true,
+                              "properties": [
+                                {
+                                  "default": 0,
+                                  "name": "frequency",
+                                  "domain": "floatRange(0,1)"
+                                },
+                                {
+                                  "name": "source",
+                                  "domain": "enum(EVS, 1000Genomes)"
+                                }
+                              ],
+                              "domain": "string"
+                            }
+                          ],
+                          "category": true,
+                          "domain": "[valueless]"
+                        },
+                        {
+                          "fixed": true,
+                          "name": "levelOfEvidence",
+                          "items": [
+                            {
+                              "identifier": true,
+                              "name": "level",
+                              "category": true,
+                              "domain": "enum(simple case report,case w/ control,functional,in silico prediction,gene region,type of variant,segregation data,lack of variants in controls)"
+                            }
+                          ],
+                          "category": true,
+                          "domain": "[valueless]"
+                        }
+                      ],
+                      "domain": "string"
+                    }
+                  ],
+                  "category": true,
+                  "domain": "[valueless]"
+                }
+              ],
+              "domain": "[valueless]"
+            }
+          ],
+          "domain": "string"
+        }
+      ],
+      "category": true,
+      "domain": "[valueless]"
+    },
+    {
+      "fixed": true,
+      "name": "summaryOfLitEvidence",
+      "category": true,
+      "properties": [
+        {
+          "name": "reference",
+          "domain": "enum(High,Medium,Low,Contradictory)"
+        },
+        {
+          "name": "conclusion",
+          "category": true,
+          "domain": "enum(High,Medium,Low,Contradictory)"
+        },
+        {
+          "name": "segregationData",
+          "domain": "enum(High,Medium,Low,Contradictory)"
+        },
+        {
+          "name": "geneLevelFunctionalData",
+          "domain": "enum(High,Medium,Low,Contradictory)"
+        },
+        {
+          "fixed": true,
+          "name": "pathogenicityOfVariants",
+          "category": true,
+          "properties": [
+            {
+              "name": "clearlyPathogenic",
+              "domain": "enum(High,Medium,Low,Contradictory)"
+            },
+            {
+              "name": "missenseWithCompellingEvidence",
+              "domain": "enum(High,Medium,Low,Contradictory)"
+            },
+            {
+              "name": "limitedWithCompellingEvidence",
+              "description": "changed 'weak' to 'limited' per Heidi's request",
+              "domain": "enum(High,Medium,Low,Contradictory)"
+            },
+            {
+              "name": "variantsNumber",
+              "domain": "enum(High,Medium,Low,Contradictory)"
+            }
+          ],
+          "domain": "[valueless]"
+        }
+      ],
+      "domain": "[valueless]"
+    },
+    {
+      "name": "GeneDiseaseAssertion",
+      "category": true,
+      "domain": "enum(Definitive, Strong, Moderate, Limited, No Reported Evidence, Disputed, Evidence Against)"
+    }
+  ],
+  "domain": "regexp(GCD[0-9]{6})"
+}
