@@ -1,0 +1,534 @@
+{
+  "unique": true,
+  "identifier": true,
+  "name": "documentID",
+  "description": "Document ID",
+  "required": true,
+  "properties": [
+    {
+      "name": "type",
+      "description": "Variant Type"
+    },
+    {
+      "name": "variantNucleotideSequence",
+      "description": "Variant Nucleotide Sequence",
+      "required": true,
+      "properties": [
+        {
+          "name": "source",
+          "description": "Source",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "referenceNucleotideSequence",
+      "description": "Reference Nucleotide Sequence",
+      "required": true,
+      "properties": [
+        {
+          "name": "source",
+          "description": "Source",
+          "required": true
+        }
+      ]
+    },
+    {
+      "default": "",
+      "fixed": true,
+      "name": "location",
+      "description": "Location",
+      "category": true,
+      "required": true,
+      "properties": [
+        {
+          "name": "chromosome",
+          "description": "Chromosome",
+          "required": true
+        },
+        {
+          "name": "startOfGenomicLocus",
+          "description": "Start of Genomic Locus",
+          "required": true,
+          "domain": "int"
+        },
+        {
+          "name": "endOfGenomicLocus",
+          "description": "End of Genomic Locus",
+          "required": true,
+          "domain": "int"
+        },
+        {
+          "name": "referenceAssembly",
+          "description": "Reference Assembly",
+          "required": true
+        },
+        {
+          "name": "source",
+          "description": "Source",
+          "required": true
+        }
+      ]
+    },
+    {
+      "default": "",
+      "fixed": true,
+      "name": "hgvsExpression",
+      "description": "HGVS Expression of the variant",
+      "items": [
+        {
+          "name": "hgvs",
+          "description": "HGVS",
+          "properties": [
+            {
+              "name": "source",
+              "description": "Source",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "category": true
+    },
+    {
+      "name": "dbsnpId",
+      "description": "dbSNP ID",
+      "properties": [
+        {
+          "name": "build",
+          "description": "Build",
+          "required": true
+        },
+        {
+          "name": "source",
+          "description": "Source",
+          "required": true
+        }
+      ]
+    },
+    {
+      "default": "",
+      "fixed": true,
+      "name": "variantEffectOnGene",
+      "description": "Variant Effect On Gene",
+      "items": [
+        {
+          "name": "affectedGene",
+          "description": "Affected Gene",
+          "properties": [
+            {
+              "name": "source",
+              "description": "Source",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "category": true
+    },
+    {
+      "default": "",
+      "fixed": true,
+      "name": "evidence",
+      "description": "Evidence",
+      "category": true,
+      "properties": [
+        {
+          "default": "",
+          "fixed": true,
+          "name": "clinvarAssertion",
+          "description": "ClinVar Assertion of the pathogenicity",
+          "items": [
+            {
+              "name": "clinicalSignificance",
+              "description": "Clinical Significance",
+              "properties": [
+                {
+                  "name": "phenotype",
+                  "description": "Description of the phenotype",
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "source",
+                      "description": "Source",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "category": true
+        },
+        {
+          "default": "",
+          "fixed": true,
+          "name": "computationalPrediction",
+          "description": "Computational Prediction",
+          "category": true,
+          "properties": [
+            {
+              "name": "sift",
+              "description": "SIFT prediction"
+            },
+            {
+              "name": "pp2",
+              "description": "PolyPhen2 prediction"
+            }
+          ]
+        },
+        {
+          "default": "",
+          "fixed": true,
+          "name": "PopulationStudyEvidence",
+          "description": "Population Study Evidence",
+          "category": true,
+          "properties": [
+            {
+              "name": "foundinPCGP",
+              "description": "Found in PCGP project",
+              "properties": [
+                {
+                  "name": "source",
+                  "description": "Source",
+                  "required": true
+                }
+              ],
+              "domain": "boolean"
+            },
+            {
+              "default": "",
+              "fixed": true,
+              "name": "variantFrequency",
+              "description": "Variant Frequency",
+              "category": true,
+              "properties": [
+                {
+                  "name": "1000GenomesVariantFrequency",
+                  "description": "1000 Genomes Variant Frequency",
+                  "properties": [
+                    {
+                      "name": "source",
+                      "description": "Source",
+                      "required": true
+                    }
+                  ],
+                  "domain": "float"
+                },
+                {
+                  "name": "esp6500VariantFrequency",
+                  "description": "ESP6500 Variant Frequency",
+                  "properties": [
+                    {
+                      "name": "source",
+                      "description": "Source",
+                      "required": true
+                    }
+                  ],
+                  "domain": "float"
+                },
+                {
+                  "name": "completeGenomics69GenomesVariantFrequency",
+                  "description": "Complete Genomics 69 Genomes Variant Frequency",
+                  "properties": [
+                    {
+                      "name": "source",
+                      "description": "Source",
+                      "required": true
+                    }
+                  ],
+                  "domain": "float"
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "cosmicVariantFrequency",
+                  "description": "COSMIC Variant Frequency",
+                  "items": [
+                    {
+                      "name": "frequency",
+                      "description": "Frequency",
+                      "properties": [
+                        {
+                          "name": "tissue",
+                          "description": "Tissue"
+                        },
+                        {
+                          "name": "build",
+                          "description": "Build"
+                        },
+                        {
+                          "name": "source",
+                          "description": "Source",
+                          "required": true
+                        }
+                      ],
+                      "domain": "float"
+                    }
+                  ],
+                  "category": true
+                },
+                {
+                  "name": "nci60PanelVariantFrequency",
+                  "description": "NCI60 Panel Variant Frequency",
+                  "properties": [
+                    {
+                      "name": "source",
+                      "description": "Source",
+                      "required": true
+                    }
+                  ],
+                  "domain": "float"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "default": "",
+          "fixed": true,
+          "name": "literatureEvidence",
+          "description": "Literature Evidence",
+          "items": [
+            {
+              "name": "pmId",
+              "description": "PMID",
+              "properties": [
+                {
+                  "name": "noteFromPublication",
+                  "description": "Note from Publication"
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "submittedBy",
+                  "description": "Submitted By",
+                  "category": true,
+                  "required": true,
+                  "properties": [
+                    {
+                      "name": "name",
+                      "description": "Name",
+                      "required": true
+                    },
+                    {
+                      "name": "contact",
+                      "description": "Contact",
+                      "required": true
+                    },
+                    {
+                      "name": "date",
+                      "description": "Date",
+                      "required": true
+                    },
+                    {
+                      "default": "",
+                      "fixed": true,
+                      "name": "submitterAffiliation",
+                      "description": "Submitter Affiliation",
+                      "items": [
+                        {
+                          "name": "affiliation",
+                          "description": "Affiliation"
+                        }
+                      ],
+                      "category": true,
+                      "required": true
+                    }
+                  ]
+                },
+                {
+                  "name": "studyType",
+                  "description": "Study Type"
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "caseStudyCohort",
+                  "description": "Case Study Cohort",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "size",
+                      "description": "Size"
+                    },
+                    {
+                      "name": "ethnicity",
+                      "description": "Ethnicity"
+                    },
+                    {
+                      "name": "phenotype",
+                      "description": "Phenotype"
+                    },
+                    {
+                      "name": "ageRange",
+                      "description": "Age Range"
+                    }
+                  ]
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "controlStudyCohort",
+                  "description": "Control Study Cohort",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "size",
+                      "description": "Size"
+                    },
+                    {
+                      "name": "ethnicity",
+                      "description": "Ethnicity"
+                    },
+                    {
+                      "name": "ageRange",
+                      "description": "Age Range"
+                    }
+                  ]
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "casesTested",
+                  "description": "Cases Tested",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "numberOfIndividualsWithVariantAndWithPhenotype",
+                      "description": "Number of Individuals with Variant and with Phenotype"
+                    },
+                    {
+                      "name": "numberOfIndividualsWithoutVariantAndWithPhenotype",
+                      "description": "Number of Individuals without Variant and with Phenotype"
+                    }
+                  ]
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "controlsTested",
+                  "description": "Controls Tested",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "numberOfIndividualsWithVariantAndWithoutPhenotype",
+                      "description": "Number of Individuals with Variant and without Phenotype"
+                    },
+                    {
+                      "name": "numberOfIndividualsWithoutVariantAndWithoutPhenotype",
+                      "description": "Number of Individuals without Variant and without Phenotype"
+                    }
+                  ]
+                },
+                {
+                  "name": "probands",
+                  "description": "Probands"
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "segregation",
+                  "description": "Segregation",
+                  "category": true,
+                  "properties": [
+                    {
+                      "name": "numberOfAffectedFamiliesWithObservedSegregation",
+                      "description": "Number of Affected Families with Observed Segregation"
+                    },
+                    {
+                      "name": "numberOfAffectedFamiliesWithoutObservedSegregation",
+                      "description": "Number of Affected Families without Observed Segregation"
+                    }
+                  ]
+                },
+                {
+                  "name": "deNovo",
+                  "description": "De Novo"
+                },
+                {
+                  "name": "heterozygotes",
+                  "description": "Heterozygotes"
+                },
+                {
+                  "name": "homozygotes",
+                  "description": "Homozygotes"
+                },
+                {
+                  "name": "compoundHeterozygotes",
+                  "description": "Compound Heterozygotes"
+                },
+                {
+                  "name": "hemizygotes",
+                  "description": "Hemizygotes"
+                },
+                {
+                  "name": "ageOfOnset",
+                  "description": "Age Of Onset"
+                },
+                {
+                  "name": "penetrance",
+                  "description": "Penetrance"
+                },
+                {
+                  "name": "inheritance",
+                  "description": "Inheritance"
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "cooccurringVariant",
+                  "description": "Co-occurring Variant",
+                  "items": [
+                    {
+                      "name": "variant",
+                      "description": "Variant"
+                    }
+                  ],
+                  "category": true
+                },
+                {
+                  "default": "",
+                  "fixed": true,
+                  "name": "functionalAssay",
+                  "description": "Functional Assay",
+                  "items": [
+                    {
+                      "name": "result",
+                      "description": "Result",
+                      "properties": [
+                        {
+                          "name": "assaySummary",
+                          "description": "Assay Summary"
+                        },
+                        {
+                          "default": "",
+                          "fixed": true,
+                          "name": "targetMolecule",
+                          "description": "Target Molecule",
+                          "items": [
+                            {
+                              "name": "molecule",
+                              "description": "Molecule"
+                            }
+                          ],
+                          "category": true
+                        },
+                        {
+                          "name": "protocol",
+                          "description": "Protocol"
+                        }
+                      ]
+                    }
+                  ],
+                  "category": true
+                }
+              ]
+            }
+          ],
+          "category": true
+        }
+      ]
+    }
+  ]
+}
