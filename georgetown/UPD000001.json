@@ -1,0 +1,94 @@
+{
+  "DocumentID": {
+    "value": "UPD000101",
+    "properties": {
+      "Protein": {
+        "value": "RAD50-interacting protein 1",
+        "properties": {
+          "LastUpdateDate": {
+            "value": "2014/10/10"
+          },
+          "RefSeqAccession": {
+            "value": "NP_068749.3"
+          },
+          "TranscriptLocation": {
+            "value": "",
+            "properties": {
+              "start": {
+                "value": 105532085
+              },
+              "end": {
+                "value": 105567684
+              },
+              "chr": {
+                "value": "chr7"
+              }
+            }
+          },
+          "GeneSymbol": {
+            "value": "RINT1"
+          },
+          "UniProtAccession": {
+            "value": "Q6NUQ1"
+          },
+          "UniProtURL": {
+            "value": "http://www.uniprot.org/uniprot/Q6NUQ1"
+          }
+        }
+      },
+      "featureList": {
+        "value": "",
+        "items": [
+          {
+            "feature": {
+              "value": "xewrERW1",
+              "properties": {
+                "name": {
+                  "value": "RINT1/TIP20"
+                },
+                "type": {
+                  "value": "Domain"
+                },
+                "proteinSeqCoordinates": {
+                  "value": "",
+                  "properties": {
+                    "start": {
+                      "value": 220
+                    },
+                    "end": {
+                      "value": 792
+                    }
+                  }
+                },
+                "genomicCoordinates": {
+                  "value": "",
+                  "properties": {
+                    "start": {
+                      "value": 105187499
+                    },
+                    "end": {
+                      "value": 105207758
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "feature": {
+              "value": "kjur4qWf",
+              "properties": {
+                "type": {
+                  "value": ""
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ProteinFunction": {
+        "value": "\"Tumor suppressor. Acts as a dual-specificity protein phosphatase, dephosphorylating tyrosine-, serine- and threonine-phosphorylated proteins. Also acts as a lipid phosphatase, removing the phosphate in the D3 position of the inositol ring from phosphatidylinositol 3,4,5-trisphosphate, phosphatidylinositol 3,4-diphosphate, phosphatidylinositol 3-phosphate and inositol 1,3,4,5-tetrakisphosphate with order of substrate preference in vitro PtdIns(3,4,5)P3 > PtdIns(3,4)P2 > PtdIns3P > Ins(1,3,4,5)P4. The lipid phosphatase activity is critical for its tumor suppressor function. Antagonizes the PI3K-AKT/PKB signaling pathway by dephosphorylating phosphoinositides and thereby modulating cell cycle progression and cell survival. The unphosphorylated form cooperates with AIP1 to suppress AKT1 activation. Dephosphorylates tyrosine-phosphorylated focal adhesion kinase and inhibits cell migration and integrin-mediated cell spreading and focal adhesion formation. Plays a role as a key modulator of the AKT-mTOR signaling pathway controlling the tempo of the process of newborn neurons integration during adult neurogenesis, including correct neuron positioning, dendritic development and synapse formation. May be a negative regulator of insulin signaling and glucose metabolism in adipose tissue. The nuclear monoubiquitinated form possesses greater apoptotic potential, whereas the cytoplasmic nonubiquitinated form induces less tumor suppressive ability. In motile cells, suppresses the formation of lateral pseudopods and thereby promotes cell polarization and directed movement. Isoform alpha: Functional kinase, like isoform 1 it antagonizes the PI3K-AKT/PKB signaling pathway. Plays a role in mitochondrial energetic metabolism by promoting COX activity and ATP production, via collaboration with isoform 1 in increasing protein levels of PINK1.\""
+      }
+    }
+  }
+}
