@@ -43,7 +43,7 @@ $stderr.puts "Query url:\n#{page.uri.to_s}"
 $stderr.puts page.body
 
 ga = JSON.parse(page.body)
-statusCode=ga["status"]["statusCode"]
+statusCode=ga["status"]["msg"]
 if statusCode == "OK"
   $stderr.puts "Queried property: #{ARGV[0]}, value: #{ARGV[1]}"
   $stderr.puts "Got #{ga["data"].length} variants"
