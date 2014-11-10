@@ -22,7 +22,7 @@ process. Before you could access the database and visit any URIs, you will need 
 
 The details of calculating the proper tokens can be found in the attached ppts.
 
-Running examples
+Setup
 -----------------
 Before running these commands, please edit
 ```ruby
@@ -34,6 +34,14 @@ def getUP
   ["username","password"] #Provide your credentials here
 end
 ```
+
+The ruby gem/packge mechanize also needs to be installed.
+
+And please add the path to this folder to your ruby_path:
+```ruby
+export RUBYLIB=$RUBYLIB:/PATH/TO/THIS/FOLDER
+```
+
 You could then try the following examples:
 
 ```ruby
@@ -219,11 +227,11 @@ code,resp = api_put(url,dataDoc.to_json)
   ```
 
 
-  Server responses codes
-  -----------------------
+Server responses codes
+-----------------------
   The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files in doc folder.
 
-  Genboree Commons for other information
-  ----------------
+Genboree Commons for other information
+----------------
   Please visit Genboree Commons to reach other information and start followup
   discussions. You could reach the commons at: http://genboree.org/theCommons/projects
