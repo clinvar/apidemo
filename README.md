@@ -127,11 +127,78 @@ puts page.body
 puts page.uri.to_s
 ```
 
-Server responses codes
+Create new collections
 -----------------------
-The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files in doc folder.
+To get started, the method needs a name for the new collection and a JSON file which describes the document model for the new collection.
 
-Genboree Commons for other information
-----------------
-Please visit Genboree Commons to reach other information and start followup
-discussions. You could reach the commons at: http://genboree.org/theCommons/projects
+A example JSON document model is:
+
+```ruby
+{
+  "name": "DocumentID",
+  "identifier": true,
+  "description": "Document ID",
+  "required": true,
+  "domain": "regexp(UPD[0-9]{6})"
+}
+```
+
+An example ruby program to call the API:
+
+```ruby
+# An example usage of the clingendb API
+# to create a new collection
+#
+# @Author Xin Feng 
+# @Email xinf@bcm.edu
+# @Date 10/21/2014
+#
+
+require 'rest'
+require 'urlb'
+require 'up'
+
+if ARGV.length < 2
+$stderr.puts "Usage: ruby #{$0} collection.name model.in.json"
+$stderr.puts "Example: ruby #{$0} test0.1 example_collections/simple.model.json"
+exit
+end
+
+dataFile = ARGV[1]
+dataDoc = JSON.parse( File.read( dataFile ) )
+
+
+# Credentials
+  gbLogin, usrPass = getUP 
+
+# Database configuration
+  kbName    = 'acmg-Test'
+  grpName   = 'acmg-apiTest'
+  collName  = ARGV[0]
+
+# Url building process
+  http     = 'http://'
+  genbHost = 'genboree.org'
+
+  rsrcPath = "/REST/v1/grp/#{grpName}/kb/#{kbName}/coll/#{collName}/model?"
+  propPath = '' 
+  detailed = '' 
+
+url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath, detailed)
+
+code,resp = api_put(url,dataDoc.to_json)
+  if code.to_i > 300
+  $stderr.puts "Request failed"
+  end
+  puts resp
+  ```
+
+
+  Server responses codes
+  -----------------------
+  The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files in doc folder.
+
+  Genboree Commons for other information
+  ----------------
+  Please visit Genboree Commons to reach other information and start followup
+  discussions. You could reach the commons at: http://genboree.org/theCommons/projects
