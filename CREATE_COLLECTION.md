@@ -35,9 +35,16 @@ def getUP
 end
 ```
 
+The ruby gem/packge mechanize also needs to be installed.
+
+And please add the path to this folder to your ruby_path:
+```ruby
+export RUBYLIB=$RUBYLIB:/PATH/TO/THIS/FOLDER
+```
+
 Create new collections
 -----------------------
-To get started, the method needs a name for the new collection and a JSON file which describes the document model for the new collection.
+To get started, the method needs a name for the new collection and a JSON file which defines the document model for the new collection.
 
 A example JSON document model is:
 
@@ -99,6 +106,11 @@ code,resp = api_put(url,dataDoc.to_json)
   $stderr.puts "Request failed"
   end
   puts resp
+```
+
+To run this example:
+```ruby
+ruby createCollection.rb test0.1 example_collections/simple.model.json
 ```
 
 Server responses 
