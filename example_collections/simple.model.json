@@ -1,0 +1,7 @@
+{
+  "name": "DocumentID",
+  "identifier": true,
+  "description": "Document ID",
+  "required": true,
+  "domain": "regexp(UPD[0-9]{6})"
+}
