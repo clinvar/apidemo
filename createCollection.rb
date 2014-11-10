@@ -12,7 +12,7 @@ require 'up'
 
 if ARGV.length < 2
   $stderr.puts "Usage: ruby #{$0} collection.name model.in.json"
-  $stderr.puts "Example: ruby #{$0} test-0.1 UPD000001.json"
+  $stderr.puts "Example: ruby #{$0} test0.1 example_collections/simple.model.json"
   exit
 end
 
