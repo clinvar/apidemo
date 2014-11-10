@@ -49,7 +49,7 @@ Create new collections
 -----------------------
 To get started, the method needs a name for the new collection and a JSON file which defines the document model for the new collection.
 
-A example JSON document model is:
+An example JSON document model is:
 
 ```ruby
 {
