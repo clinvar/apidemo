@@ -22,6 +22,31 @@ process. Before you could access the database and visit any URIs, you will need 
 
 The details of calculating the proper tokens can be found in the attached ppts.
 
+Running examples
+-----------------
+Before running these commands, please edit
+```ruby
+up.rb
+```
+to include your credentials:
+```ruby
+def getUP
+  ["username","password"] #Provide your credentials here
+end
+```
+You could then try the following examples:
+
+```ruby
+# Get variants from gene APC
+ruby query.rb documentID.variantEffectOnGene.affectedGene APC 1>variants.txt 2>log
+# Get variants located in chromosome 11
+ruby query.rb documentID.location.chromosome 11 1>variants.txt 2>log
+
+#Upload a document
+ruby georgetown/insertGeorgetownData.rb GeorgetownUniProt-0.1 georgetown/UPD000001.json
+```
+
+
 Get variants from ClinGenDb
 ---------------------------
 Variants can be obtained by issuing http GET requests. Responses are returned asJSON documents that contains both the data and servers status codes. 
