@@ -74,6 +74,18 @@ And the response looks like:
    }
 }
 ```
+In comparison, for a valid document, the server will respond like:
+```ruby
+{
+  "data": {
+   .... # Details omitted
+   },
+  "status": {
+  "msg": "OK",
+  "statusCode": "OK"
+   }
+}
+```
 
 The API is equipped with data validation as well as access control. Invalid documents or URIs will be raised by the server and error codes will be reported. For a list of common error codes, please refer to the attached files in doc folder.
 
