@@ -29,7 +29,7 @@ def api_put_with_diag(url, entity, headers={})
   if respcode.to_i > 300
     $stderr.puts "Request failed at #{url}"
   else
-    $stderr.puts "Request succeeded."
+    $stderr.puts "Request succeeded at #{url}"
   end
   $stderr.puts "Server response:\n#{respbody}"
 end
