@@ -62,7 +62,10 @@ ruby dataDocValidation.rb raj103020140.1 data/validation/bad_docs/wrong_name.jso
 ```
 The file wrong_name.json intentionally spelled "properties" as "property"
 
-And the response looks like:
+Server responses
+-----------------
+
+If the data document is invalid, the server response look like:
 
 ```ruby
 {
