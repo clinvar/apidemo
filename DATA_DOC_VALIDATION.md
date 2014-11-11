@@ -58,7 +58,7 @@ And the collection's name is raj103020140.1.
 
 To run this example:
 ```ruby
-ruby .DocValidation.rb raj103020140.1 data/validation/bad_docs/wrong_name.json
+ruby dataDocValidation.rb raj103020140.1 data/validation/bad_docs/wrong_name.json
 ```
 The file wrong_name.json intentionally spelled "properties" as "property"
 
@@ -68,10 +68,10 @@ And the response looks like:
 {
   "data": {
     },
-      "status": {
-          "msg": "BAD_MODEL_DOC: The model you provided does not match the GenboreeKB specifications:\n\nERROR: the root property is missing the required 'name' field or it doesn't have a value.",
-              "statusCode": "Unsupported Media Type"
-                }
+   "status": {
+      "msg": "BAD_MODEL_DOC: The model you provided does not match the GenboreeKB specifications:\n\nERROR: the root property is missing the required 'name' field or it doesn't have a value.",
+      "statusCode": "Unsupported Media Type"
+   }
 }
 ```
 
