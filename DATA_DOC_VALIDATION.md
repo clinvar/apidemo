@@ -65,7 +65,7 @@ The file wrong_name.json intentionally spelled "properties" as "property"
 Server responses
 -----------------
 
-If the data document is invalid, the server response look like:
+If the data document is invalid, the server response may look like:
 
 ```ruby
 {
