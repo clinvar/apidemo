@@ -24,6 +24,16 @@ def api_get(url, entity, headers={})
   return response.code, response.body
 end
 
+def api_put_with_diag(url, entity, headers={})
+  respcode, respbody = api_put(url, entity, headers)
+  if respcode.to_i > 300
+    $stderr.puts "Request failed at #{url}"
+  else
+    $stderr.puts "Request succeeded."
+  end
+  $stderr.puts "Server response:\n#{respbody}"
+end
+
 def api_put(url, entity, headers={})
   uri = URI.parse(url)
 
