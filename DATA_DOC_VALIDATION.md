@@ -69,8 +69,8 @@ And the response looks like:
   "data": {
     },
    "status": {
-      "msg": "BAD_MODEL_DOC: The model you provided does not match the GenboreeKB specifications:\n\nERROR: the root property is missing the required 'name' field or it doesn't have a value.",
-      "statusCode": "Unsupported Media Type"
+   "msg": "BAD_MODEL_DOC: The model you provided does not match the GenboreeKB specifications:\n\nERROR: the root property is missing the required 'name' field or it doesn't have a value.",
+   "statusCode": "Unsupported Media Type"
    }
 }
 ```
