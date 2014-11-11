@@ -12,7 +12,7 @@ part contains two sections that illustrates the use of http GET and PUT.
 
 The ClinGenDb UI
 ----------------
-Although not directly relatected to API, the UI may help visualize the data structure and validate uploaded documents. Please view the prototype of UI at: http://genboree.org/genboreeKB/genboree_kbs?project_id=acmg-apitest
+Although not directly related to API, the UI may help visualize the data structure and validate uploaded documents. Please view the prototype of UI at: http://genboree.org/genboreeKB/genboree_kbs?project_id=acmg-apitest
 
 Autherization process
 ---------------------
