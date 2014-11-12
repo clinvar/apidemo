@@ -77,6 +77,7 @@ If the data document is invalid, the server response may look like:
    }
 }
 ```
+The "msg" section describes the specific reasons for the failure.
 In comparison, for a valid document, the server will respond like:
 ```ruby
 {
