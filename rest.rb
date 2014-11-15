@@ -13,7 +13,7 @@ def put(url, entity, headers={})
   ag.put(url, entity, headers)
 end
 
-def api_get(url, entity, headers={})
+def api_get(url)
   uri = URI.parse(url)
 
   http = Net::HTTP.new(uri.host, uri.port)
@@ -24,6 +24,18 @@ def api_get(url, entity, headers={})
   return response.code, response.body
 end
 
+def api_get_with_diag(url)
+  respcode, respbody = api_get(url)
+  if respcode.to_i > 300
+    $stderr.puts "Request failed at #{url}"
+  else
+    $stderr.puts "Request succeeded at #{url}"
+  end
+  $stderr.puts "Server response code:\n#{respcode}"
+  $stderr.puts "Server response msg:\n#{respbody}"
+end
+
+
 def api_put_with_diag(url, entity, headers={})
   respcode, respbody = api_put(url, entity, headers)
   if respcode.to_i > 300
@@ -31,7 +43,8 @@ def api_put_with_diag(url, entity, headers={})
   else
     $stderr.puts "Request succeeded at #{url}"
   end
-  $stderr.puts "Server response:\n#{respbody}"
+  $stderr.puts "Server response code:\n#{respcode}"
+  $stderr.puts "Server response msg:\n#{respbody}"
 end
 
 def api_put(url, entity, headers={})
