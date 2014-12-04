@@ -41,6 +41,4 @@ detailed = ''
 
 url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath, detailed)
 
-page = put(url,dataDoc.to_json)
-resp = JSON.parse(page.body)
-puts resp["status"]
+api_put_with_diag(url,dataDoc.to_json)
