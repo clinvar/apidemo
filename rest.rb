@@ -13,6 +13,29 @@ def put(url, entity, headers={})
   ag.put(url, entity, headers)
 end
 
+def api_delete(url)
+  uri = URI.parse(url)
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Delete.new(uri.request_uri)
+
+  response = http.request(request)
+
+  return response.code, response.body
+end
+
+def api_delete_with_diag(url)
+  respcode, respbody = api_delete(url)
+  if respcode.to_i > 300
+    $stderr.puts "Request failed at #{url}"
+  else
+    $stderr.puts "Request succeeded at #{url}"
+  end
+  $stderr.puts "Server response code:\n#{respcode}"
+  $stderr.puts "Server response msg:\n#{respbody}"
+end
+
+
 def api_get(url)
   uri = URI.parse(url)
 
