@@ -1,5 +1,5 @@
 # An example usage of the clingendb API
-# to upload a document into a collection
+# to PUT a document into a collection
 #
 # @Author Xin Feng 
 # @Email xinf@bcm.edu
