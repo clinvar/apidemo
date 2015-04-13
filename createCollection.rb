@@ -9,9 +9,10 @@
 require 'rest'
 require 'urlb'
 require 'up'
+require 'json'
 
-if ARGV.length < 2
-  $stderr.puts "Usage: ruby #{$0} collection.name model.in.json"
+if ARGV.length < 3
+  $stderr.puts "Usage: ruby #{$0} collection.name model.in.json kb.name"
   $stderr.puts "Example: ruby #{$0} test0.1 example_collections/simple.model.json"
   exit
 end
@@ -24,10 +25,14 @@ dataDoc = JSON.parse( File.read( dataFile ) )
 gbLogin, usrPass = getUP 
 
 # Database configuration
-kbName    = 'acmg-Test'
+kbName = ARGV[2]
 grpName   = 'acmg-apiTest'
 collName  = ARGV[0]
 
+$stderr.puts "Config info:"
+$stderr.puts "KB:#{kbName}"
+$stderr.puts "Collection:#{collName}"
+$stderr.puts "Group:#{grpName}"
 # Url building process
 http     = 'http://'
 genbHost = 'genboree.org'
