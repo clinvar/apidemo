@@ -58,7 +58,7 @@ And the collection's name is raj103020140.1.
 
 To run this example:
 ```ruby
-ruby dataDocValidation.rb raj103020140.1 data/validation/bad_docs/wrong_name.json
+ruby dataDocValidation.rb raj103020140.1 data/validation/bad_docs/wrong_name.json acmg-Test
 ```
 The file wrong_name.json intentionally spelled "properties" as "property"
 
@@ -68,14 +68,7 @@ Server responses
 If the data document is invalid, the server response may look like:
 
 ```ruby
-{
-  "data": {
-    },
-   "status": {
-   "msg": "BAD_MODEL_DOC: The model you provided does not match the GenboreeKB specifications:\n\nERROR: the root property is missing the required 'name' field or it doesn't have a value.",
-   "statusCode": "Unsupported Media Type"
-   }
-}
+{"status":{"msg":"DOC_REJECTED: your document was rejected because validation failed. Validation complained that: ERROR: the document does not match the data model schema for the raj103020140.1 collection! Specifically:\n  - ERROR: The root property of a document can only have 'properties' or 'value' as keys and nothing else. You have: propertie\n  - ERROR: there are some missing required sub-properties under the \"DocumentID\" property. Specifically, the model says the following sub-properties are required, but they are not present in the doc: \"dateOfLitSearch\", \"diseaseID\", \"numIndependentClinicalReports\", \"numReturnedSearchResults\", \"pubmedSearchQuery\", \"timeToComplete\"","relatedJobIds":[],"statusCode":"Not Acceptable"},"data":{}}
 ```
 The "msg" section describes the specific reasons for the failure.
 In comparison, for a valid document, the server will respond like:
