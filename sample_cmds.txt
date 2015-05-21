@@ -1,6 +1,0 @@
-ruby query.rb documentID.variantEffectOnGene.affectedGene APC 1>variants.txt 2>log
-ruby query.rb documentID.evidence.PopulationStudyEvidence.variantFrequency.1000GenomesVariantFrequency 0.09 1>variants.txt 2>log
-ruby query.rb documentID.location.chromosome 11 1>variants.txt 2>log
-
-ruby georgetown/insertGeorgetownData.rb GeorgetownUniProt-0.1 georgetown/UPD000001.json
-
