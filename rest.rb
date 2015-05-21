@@ -1,4 +1,3 @@
-require 'mechanize'
 require 'net/http'
 require 'uri'
 

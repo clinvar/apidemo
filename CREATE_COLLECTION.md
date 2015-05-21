@@ -35,11 +35,6 @@ def getUP
 end
 ```
 
-The ruby gem/packge mechanize also needs to be installed.
-```ruby
-gem install mechanize
-```
-
 And please add the path to this folder to your ruby_path:
 ```ruby
 export RUBYLIB=$RUBYLIB:/PATH/TO/THIS/FOLDER
