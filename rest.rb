@@ -58,6 +58,15 @@ def api_get_with_diag(url)
   $stderr.puts "Server response msg:\n#{respbody}"
 end
 
+def api_put_with_diag_quiet(url, entity, headers={})
+  respcode, respbody = api_put(url, entity, headers)
+  if respcode.to_i > 300
+    $stderr.puts "Request failed at #{url}"
+  else
+    $stderr.puts "Request succeeded at #{url}"
+  end
+  return respcode, respbody
+end
 
 def api_put_with_diag(url, entity, headers={})
   respcode, respbody = api_put(url, entity, headers)
@@ -70,10 +79,11 @@ def api_put_with_diag(url, entity, headers={})
   $stderr.puts "Server response msg:\n#{respbody}"
 end
 
-def api_put(url, entity, headers={})
+def api_put(url, entity, headers={}, timeout=500)
   uri = URI.parse(url)
 
   http = Net::HTTP.new(uri.host, uri.port)
+  http.read_timeout = 1800
   request = Net::HTTP::Put.new(uri.request_uri)
   request.body = entity
 

@@ -1,6 +1,6 @@
 def getUP
-  $stderr.puts "Please setup your credentials here"
-  ["",""] #Provide your credentials here
+ ["xin","123456"] #Provide your credentials here
+ # ["xfengutsw","123456"] #Provide your credentials here
           #EXAMPLE: ["username","password"]
 end
   

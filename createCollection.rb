@@ -13,7 +13,6 @@ require 'json'
 
 if ARGV.length < 3
   $stderr.puts "Usage: ruby #{$0} collection.name model.in.json kb.name"
-  $stderr.puts "Example: ruby #{$0} test0.1 example_collections/simple.model.json"
   exit
 end
 
@@ -43,9 +42,4 @@ detailed = ''
 
 url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath, detailed)
 
-code,resp = api_put(url,dataDoc.to_json)
-if code.to_i > 300
-  $stderr.puts "Request failed"
-end
-puts resp
-
+api_put_with_diag(url,dataDoc.to_json)

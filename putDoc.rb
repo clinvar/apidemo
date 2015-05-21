@@ -9,7 +9,8 @@
 require 'rest'
 require 'urlb'
 require 'up'
-
+require 'json'
+require 'cgi'
 if ARGV.length < 2
   $stderr.puts "Usage: ruby #{$0} collection.name json.doc"
   $stderr.puts "Example: ruby #{$0} GeorgetownUniProt-0.1 UPD000001.json"
@@ -31,7 +32,7 @@ docID = CGI.escape(dataDoc['DocumentID']['value']).gsub(/\+/,'%20')
 gbLogin, usrPass = getUP 
 
 # Database configuration
-kbName    = 'acmg-Test'
+kbName    = 'test'
 grpName   = 'acmg-apiTest'
 collName  = ARGV[0]
 

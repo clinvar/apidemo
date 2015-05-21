@@ -10,9 +10,9 @@ require 'rest'
 require 'urlb'
 require 'up'
 
-if ARGV.length < 2
-  $stderr.puts "Usage: ruby #{$0} collection.name property.path property.query.value"
-  $stderr.puts "Example: ruby #{$0} GeorgetownUniProt-0.1 DocumentID.Protein RINT1"
+if ARGV.length < 3
+  $stderr.puts "Usage: ruby #{$0} collection.name property.path property.query.value kb.name"
+  $stderr.puts "Example: ruby #{$0} GeorgetownUniProt-0.1 DocumentID.Protein RINT1 acmg-Test"
   exit
 end
 
@@ -20,23 +20,29 @@ end
 # Credentials
 gbLogin, usrPass = getUP 
 
-# Database configuration
-kbName    = 'acmg-Test'
-grpName   = 'acmg-apiTest'
 
 # Query configuration 
 qryVal = ARGV[2].to_s
 props  = ARGV[1].to_s
 collName  = ARGV[0].to_s
 
+# Database configuration
+kbName = ARGV[3]
+grpName   = 'acmg-apiTest'
+
+$stderr.puts "Config info:"
+$stderr.puts "KB:#{kbName}"
+$stderr.puts "Collection:#{collName}"
+$stderr.puts "Group:#{grpName}"
+
 # Url building process
 http     = 'http://'
 genbHost = 'genboree.org'
 
 rsrcPath = "/REST/v1/grp/#{grpName}/kb/#{kbName}/coll/#{collName}/docs?"
-propPath = "matchProps=#{props}&matchValue=#{qryVal}"
- detailed = '' # Use this if you only want doc IDs 
-#detailed    = '&detailed=true' # Enable full JSON report
+propPath = "matchProps=#{props}&matchValue=#{qryVal}&matchMode=keyword"
+detailed = '&detailed=true' # Enable full JSON report
+#detailed = '' # Use this if you only want doc IDs 
 url = buildURL(genbHost, gbLogin, usrPass, rsrcPath, propPath, detailed)
 
 api_get_with_diag(url)

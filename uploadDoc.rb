@@ -9,10 +9,10 @@
 require 'rest'
 require 'urlb'
 require 'up'
-
-if ARGV.length < 2
-  $stderr.puts "Usage: ruby #{$0} collection.name json.doc"
-  $stderr.puts "Example: ruby #{$0} GeorgetownUniProt-0.1 UPD000001.json"
+require 'json'
+require 'cgi'
+if ARGV.length < 3
+  $stderr.puts "Usage: ruby #{$0} collection.name json.doc kb.name"
   exit
 end
 
@@ -31,10 +31,14 @@ docID = CGI.escape(dataDoc['DocumentID']['value']).gsub(/\+/,'%20')
 gbLogin, usrPass = getUP 
 
 # Database configuration
-kbName    = 'acmg-Test'
+kbName = ARGV[2]
 grpName   = 'acmg-apiTest'
 collName  = ARGV[0]
 
+$stderr.puts "Config info:"
+$stderr.puts "KB:#{kbName}"
+$stderr.puts "Collection:#{collName}"
+$stderr.puts "Group:#{grpName}"
 # Url building process
 http     = 'http://'
 genbHost = 'genboree.org'
