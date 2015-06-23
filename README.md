@@ -1,3 +1,4 @@
+If you are here for ClinVar data, please visit: https://github.com/clingendb/clinvar_xml_pipe for more details.
 
 Getting Started
 ===============
